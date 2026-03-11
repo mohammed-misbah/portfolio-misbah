@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 30 30% 96%;
+    --foreground: 220 25% 18%;
+
+    --card: 30 25% 98%;
+    --card-foreground: 220 25% 18%;
+
+    --popover: 30 25% 98%;
+    --popover-foreground: 220 25% 18%;
+
+    --primary: 175 55% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 25 30% 92%;
+    --secondary-foreground: 220 20% 30%;
+
+    --muted: 25 20% 93%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 10 75% 62%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 25 20% 88%;
+    --input: 25 20% 90%;
+    --ring: 175 55% 42%;
+
+    --radius: 1rem;
+
+    --teal: 175 55% 42%;
+    --coral: 10 75% 62%;
+    --pastel-blue: 210 60% 72%;
+    --warm-beige: 30 30% 93%;
+    --soft-cream: 35 35% 96%;
+    --pink-highlight: 350 50% 82%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.15);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer components {
+  .text-glow {
+    color: hsl(var(--primary));
+  }
+
+  .text-glow-accent {
+    color: hsl(var(--accent));
+  }
+
+  .glass-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 1px 3px hsl(220 20% 15% / 0.04), 0 8px 32px hsl(220 20% 15% / 0.04);
+  }
+
+  .glass-card:hover {
+    box-shadow: 0 4px 16px hsl(var(--primary) / 0.08), 0 12px 40px hsl(220 20% 15% / 0.06);
+  }
+
+  .pastel-gradient {
+    background: linear-gradient(135deg, hsl(var(--warm-beige)) 0%, hsl(var(--soft-cream)) 50%, hsl(var(--pink-highlight) / 0.15) 100%);
+  }
+
+  .section-gradient {
+    background: radial-gradient(ellipse at 30% 0%, hsl(var(--primary) / 0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 100%, hsl(var(--coral) / 0.04) 0%, transparent 50%);
+  }
+
+  .section-gradient-alt {
+    background: radial-gradient(ellipse at 70% 0%, hsl(var(--pastel-blue) / 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 100%, hsl(var(--pink-highlight) / 0.06) 0%, transparent 50%);
+  }
+
+  .hero-float {
+    animation: hero-float 8s ease-in-out infinite;
+  }
+
+  @keyframes hero-float {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-18px) scale(1.005); }
+  }
+
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .float-slow {
+    animation: float-slow 10s ease-in-out infinite;
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(2deg); }
+  }
+
+  .pulse-soft {
+    animation: pulse-soft 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0); }
+    50% { box-shadow: 0 0 20px 4px hsl(var(--primary) / 0.08); }
+  }
+
+  .gradient-line {
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--pastel-blue)), hsl(var(--coral)));
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.25);
+    border-radius: 3px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.4);
+  }
+}
